@@ -1,14 +1,24 @@
+"use client"
+import { useState } from "react";
+import AddModel from "./Model"
+
 const StudentTable = () => {
-    const students = [
-      { name: "Anshuman Kashyap", cohort: "AY 2024-25", status: "green" },
+  const [open,setOpen] =useState(false)  
+  const students = [
+      { name: "Anshuman Kashyap", cohort: "AY 2024-25",batch : "class 9 science",sub : "class 9 math ", date :"12 nov 2023",last : "12 nov 2023", status: "green" },
+      { name: "hritik mittal", cohort: "AY 2024-25",batch : "class 9 science",sub : "class 9 math ", date :"12 nov 2023",last : "12 nov 2023", status: "green" },
       // Add other student data here
     ];
   
     return (
       <div className="p-6">
+        
         <div className="flex justify-between mb-4">
           <h2 className="text-xl font-semibold">Students</h2>
-          <button className="px-4 py-2 bg-gray-200 rounded">+ Add Student</button>
+          
+          
+          <AddModel/>
+          
         </div>
         <table className="w-full border-collapse">
           <thead>
@@ -16,7 +26,15 @@ const StudentTable = () => {
               <th className="p-2">Student Name</th>
               <th className="p-2">Cohort</th>
               <th className="p-2">Courses</th>
+              <th className="p-2"></th>
+
+              <th className="p-2">Date Joined</th>
+              <th className="p-2">last login</th>
+
+              
               <th className="p-2">Status</th>
+              
+
             </tr>
           </thead>
           <tbody>
@@ -24,7 +42,12 @@ const StudentTable = () => {
               <tr key={idx} className="border-b">
                 <td className="p-2">{student.name}</td>
                 <td className="p-2">{student.cohort}</td>
-                <td className="p-2">CBSE 9 Math</td>
+                <td className="p-2">{student.batch}</td>
+                <td className="p-2">{student.sub}</td>
+                <td className="p-2">{student.last}</td>
+                <td className="p-2">{student.date}</td>
+                
+
                 <td className="p-2">
                   <span
                     className={`h-3 w-3 rounded-full inline-block ${
