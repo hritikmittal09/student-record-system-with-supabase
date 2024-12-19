@@ -1,12 +1,15 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import useStudentStore from "@/store/store";
 
 
 
 const Modal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [err, seterr] =useState(false)
+  const fetchStudents = useStudentStore((state) => state.fetchStudents);
+  const addStudent = useStudentStore((state) => state.addStudent); 
 
   // Data fields
   const [formData, setFormData] = useState({
@@ -20,26 +23,26 @@ const Modal = () => {
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-     try {
-      const url = 'api/records'
-      const res = await axios.post(url,formData)
-      console.log(res);
-      setIsOpen(false)
-      
-     } catch (error) {
-      
-      seterr(true)
-     }
-    useEffect(()=>{
-      seterr(false)
 
-    },[])
+    try {
+      const url = '/api/records';
+      const res = await axios.post(url, formData); // Insert new student into the database
+     // console.log(res.data);
+      setIsOpen(false);
+      seterr(false) // Close the modal on success
+      fetchStudents(); // Fetch updated data
+    } catch (error) {
+      console.error('Error adding student:', error);
+      seterr(true); // Display error message
+    }
+     
     
-  
-    console.log('Form Data:', formData);
   
     
   };
+  useEffect(()=>{
+    seterr(false)
+  })
   
 
   // Handle form changes

@@ -11,6 +11,7 @@ const useStudentStore = create((set) => ({
       console.error('Error fetching students:', error);
     }
   },
+  
 }));
 
 export default useStudentStore;
