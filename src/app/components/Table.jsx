@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import AddModel from "./Model"
 //import { supabase } from "@/supabase/apis";
 import axios from "axios";
+import useStudentStore from "@/store/store";
 
 
 const StudentTable = () => {
@@ -26,18 +27,17 @@ const StudentTable = () => {
 
   }
 
+  const students = useStudentStore((state) => state.students);
+  const fetchStudents = useStudentStore((state) => state.fetchStudents);
+
   useEffect(()=>{
   
-  fetch()
-},[])
+  fetchStudents()
+},[fetchStudents])
 
 
 
-  const students = [
-      { Name: "Anshuman Kashyap", cohort: "AY 2024-25",batch : "class 9 science",sub : "class 9 math ", date :"12 nov 2023",last : "12 nov 2023", status: "green" },
-      ...data
-      // Add other student data here
-    ];
+ 
   
     return (
       <div className="p-6">
