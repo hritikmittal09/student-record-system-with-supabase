@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+"use client"
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+
 
 const Modal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [err, seterr] =useState(false)
 
   // Data fields
   const [formData, setFormData] = useState({
@@ -13,6 +18,29 @@ const Modal = () => {
     last: "",
     status: "",
   });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+     try {
+      const url = 'api/records'
+      const res = await axios.post(url,formData)
+      console.log(res);
+      setIsOpen(false)
+      
+     } catch (error) {
+      
+      seterr(true)
+     }
+    useEffect(()=>{
+      seterr(false)
+
+    },[])
+    
+  
+    console.log('Form Data:', formData);
+  
+    
+  };
+  
 
   // Handle form changes
   const handleChange = (e) => {
@@ -146,11 +174,13 @@ const Modal = () => {
 
               {/* Submit Button */}
               <button
+              onClick={handleSubmit}
                 type="submit"
                 className="px-4 py-2 bg-gray-200 rounded"
               >
                 Add Student
               </button>
+              {err ==true && <span className="  text-red-700 text-center"> # fill all details </span>}
             </form>
           </div>
         </div>

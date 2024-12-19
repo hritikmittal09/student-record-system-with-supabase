@@ -8,8 +8,9 @@ import axios from "axios";
 const StudentTable = () => {
   const [open,setOpen] =useState(false)  
   const [data,setdata] =useState([])
-useEffect(()=>{
-  const fetch = async ()=>{
+
+
+   const fetch = async ()=>{
     const url = 'api/records'
     
      try {
@@ -24,6 +25,9 @@ useEffect(()=>{
 
 
   }
+
+  useEffect(()=>{
+  
   fetch()
 },[])
 
@@ -76,7 +80,7 @@ useEffect(()=>{
                 <td className="p-2">
                   <span
                     className={`h-3 w-3 rounded-full inline-block ${
-                      student.status === "green" ? "bg-green-500" : "bg-red-500"
+                      student.online == true ? "bg-green-500" : "bg-red-500"
                     }`}
                   ></span>
                 </td>

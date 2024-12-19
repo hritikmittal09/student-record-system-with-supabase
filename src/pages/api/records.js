@@ -20,8 +20,39 @@ export default async function handler(req, res) {
       console.error('Unexpected error:', err.message);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
-  } else {
-    // Handle unsupported HTTP methods
-    return res.status(405).json({ error: 'Method Not Allowed' });
-  }
+  }  if (req.method === 'POST') {
+    const { name, cohort, batch, sub, date, last, status } = req.body;
+    const record = {
+      Name: name, // Match Supabase's column names
+      cohort,
+      batch,
+      sub,
+      date,
+      last,
+      Courses : batch,
+      online :status==="green"? true: false
+    };
+    console.log(record);
+    
+    
+    
+
+    try {
+      // Insert the new record into the Supabase table
+      const { data, error } = await supabaseClient
+        .from('students record')
+        .insert([record]);
+
+      if (error) {
+        console.error('Error inserting record:', error.message);
+        return res.status(500).json({ error: 'Failed to insert record' });
+      }
+
+      // Return the inserted data
+      return res.status(200).json({ message: 'Record inserted successfully', data });
+    } catch (err) {
+      console.error('Unexpected error:', err.message);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  } 
 }
