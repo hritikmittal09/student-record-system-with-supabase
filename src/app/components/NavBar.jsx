@@ -36,16 +36,16 @@ const CourseSearchNav = () => {
         </div>
         <div className=" flex gap-5">
             <div>
-                <Image src={helpIcon} width={20} height={20}/>   
+                <Image alt="" src={helpIcon} width={20} height={20}/>   
             </div>
             <div>
-            <Image src={messageIcon} width={20} height={20}/>
+            <Image alt="" src={messageIcon} width={20} height={20}/>
             </div>
             <div>
-            <Image src={connectIcon} width={20} height={20}/>
+            <Image alt="" src={connectIcon} width={20} height={20}/>
             </div>
             <div>
-            <Image src={bellIcon} width={20} height={20}/>
+            <Image alt="" src={bellIcon} width={20} height={20}/>
             </div>
 
         </div>

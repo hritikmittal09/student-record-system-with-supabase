@@ -1,12 +1,37 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AddModel from "./Model"
+//import { supabase } from "@/supabase/apis";
+import axios from "axios";
+
 
 const StudentTable = () => {
   const [open,setOpen] =useState(false)  
+  const [data,setdata] =useState([])
+useEffect(()=>{
+  const fetch = async ()=>{
+    const url = 'api/records'
+    
+     try {
+      const res = await axios.get(url)
+
+      setdata(res.data)
+     } catch (error) {
+      console.log(error);
+      
+      
+     }
+
+
+  }
+  fetch()
+},[])
+
+
+
   const students = [
-      { name: "Anshuman Kashyap", cohort: "AY 2024-25",batch : "class 9 science",sub : "class 9 math ", date :"12 nov 2023",last : "12 nov 2023", status: "green" },
-      { name: "hritik mittal", cohort: "AY 2024-25",batch : "class 9 science",sub : "class 9 math ", date :"12 nov 2023",last : "12 nov 2023", status: "green" },
+      { Name: "Anshuman Kashyap", cohort: "AY 2024-25",batch : "class 9 science",sub : "class 9 math ", date :"12 nov 2023",last : "12 nov 2023", status: "green" },
+      ...data
       // Add other student data here
     ];
   
@@ -40,7 +65,7 @@ const StudentTable = () => {
           <tbody>
             {students.map((student, idx) => (
               <tr key={idx} className="border-b">
-                <td className="p-2">{student.name}</td>
+                <td className="p-2">{student.Name}</td>
                 <td className="p-2">{student.cohort}</td>
                 <td className="p-2">{student.batch}</td>
                 <td className="p-2">{student.sub}</td>
