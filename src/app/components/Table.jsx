@@ -11,21 +11,7 @@ const StudentTable = () => {
   const [data,setdata] =useState([])
 
 
-   const fetch = async ()=>{
-    const url = 'api/records'
-    
-     try {
-      const res = await axios.get(url)
-
-      setdata(res.data)
-     } catch (error) {
-      console.log(error);
-      
-      
-     }
-
-
-  }
+   
 
   const students = useStudentStore((state) => state.students);
   const fetchStudents = useStudentStore((state) => state.fetchStudents);
