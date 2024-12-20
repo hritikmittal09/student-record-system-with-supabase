@@ -7,15 +7,12 @@ import axios from "axios";
 import useStudentStore from "@/store/store";
 
 
+
 const StudentTable = () => {
   const [open,setOpen] =useState(false)  
   const [data,setdata] =useState([])
 
-const handlDelete = async(id)=>{
-  console.log(id);
-  
 
-}
    
 
   const students = useStudentStore((state) => state.students);
@@ -25,6 +22,25 @@ const handlDelete = async(id)=>{
   
   fetchStudents()
 },[fetchStudents])
+
+
+const handlDelete = async(id)=>{
+  console.log(id);
+  try {
+    let url = `api/deleteRecord?id=${id}`
+    const res = await axios.delete(url)
+    console.log(res);
+   await fetchStudents()
+    
+  } catch (error) {
+    console.log(error);
+    
+    
+
+    
+  }
+
+}
 
 
 
