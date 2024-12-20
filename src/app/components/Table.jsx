@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
 import AddModel from "./Model"
+import { MdOutlineDeleteOutline } from "react-icons/md";
 //import { supabase } from "@/supabase/apis";
 import axios from "axios";
 import useStudentStore from "@/store/store";
@@ -10,7 +11,11 @@ const StudentTable = () => {
   const [open,setOpen] =useState(false)  
   const [data,setdata] =useState([])
 
+const handlDelete = async(id)=>{
+  console.log(id);
+  
 
+}
    
 
   const students = useStudentStore((state) => state.students);
@@ -45,9 +50,8 @@ const StudentTable = () => {
 
               <th className="p-2">Date Joined</th>
               <th className="p-2">last login</th>
-
-              
               <th className="p-2">Status</th>
+              <th className="p-2">Action</th>
               
 
             </tr>
@@ -70,6 +74,7 @@ const StudentTable = () => {
                     }`}
                   ></span>
                 </td>
+                <td role="button" onClick={()=>{handlDelete(student.id)}}>{<MdOutlineDeleteOutline className=" text-2xl"/>}</td>
               </tr>
             ))}
           </tbody>

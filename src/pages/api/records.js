@@ -1,5 +1,5 @@
-import { log } from 'console';
-import supabaseClient from '../../supabase/apis'; // Adjust the path as needed
+
+import supabaseClient from "../../supabase/apis" // Adjust the path as needed
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
@@ -11,6 +11,8 @@ export default async function handler(req, res) {
         console.error('Error fetching records:', error.message);
         return res.status(500).json({ error: 'Failed to fetch records' });
       }
+      //console.log(data);
+      
 
       
       
