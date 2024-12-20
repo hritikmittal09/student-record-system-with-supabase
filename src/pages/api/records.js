@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       Courses : batch,
       online :status==="green"? true: false
     };
-    console.log(record);
+   // console.log(record);
     
     
     

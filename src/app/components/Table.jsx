@@ -17,6 +17,7 @@ const StudentTable = () => {
 
   const students = useStudentStore((state) => state.students);
   const fetchStudents = useStudentStore((state) => state.fetchStudents);
+  const deleteStudent = useStudentStore((state) => state.deleteStudent);
 
   useEffect(()=>{
   
@@ -27,9 +28,8 @@ const StudentTable = () => {
 const handlDelete = async(id)=>{
   console.log(id);
   try {
-    let url = `api/deleteRecord?id=${id}`
-    const res = await axios.delete(url)
-    console.log(res);
+    await deleteStudent(id)
+    //console.log(res);
    await fetchStudents()
     
   } catch (error) {
