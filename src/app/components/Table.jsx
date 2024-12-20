@@ -5,6 +5,9 @@ import { MdOutlineDeleteOutline } from "react-icons/md";
 //import { supabase } from "@/supabase/apis";
 import axios from "axios";
 import useStudentStore from "@/store/store";
+import Image from "next/image";
+import course from "../../../public/courseTable.png"
+import batch from "../../../public/batchTable.png"
 
 
 
@@ -77,8 +80,8 @@ const handlDelete = async(id)=>{
               <tr key={idx} className="border-b">
                 <td className="p-2">{student.Name}</td>
                 <td className="p-2">{student.cohort}</td>
-                <td className="p-2">{student.batch}</td>
-                <td className="p-2">{student.sub}</td>
+                <td className="p-2"><Image alt="" src={course}  width={20} height={20} className=" m-2 inline"/> {student.batch}</td>
+                <td className="p-2"> <Image alt="" src={batch}  width={20} height={20} className=" m-2 inline"/>{student.sub}</td>
                 <td className="p-2">{student.last}</td>
                 <td className="p-2">{student.date}</td>
                 
