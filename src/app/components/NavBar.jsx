@@ -1,18 +1,26 @@
+"use client"
 import helpIcon from "../../../public/help.png"
 import bellIcon from "../../../public/bell.png"
 import messageIcon from "../../../public/message.png"
 import connectIcon from "../../../public/connect.png"
 import profileIcon from "../../../public/profile.png"
+import useStudentStore from "@/store/store"
 
 import Image from "next/image";
 const CourseSearchNav = () => {
+
+
+  const setSearch = useStudentStore((state) => state.setSearchQuery);
+
     return (
       <div className="w-full h-16 bg-white shadow-md flex items-center justify-between px-6">
         {/* Search Section */}
         <div className="flex items-center gap-4">
           <input
+          
             type="text"
-            placeholder="Search your course"
+            placeholder="Search student Name "
+            onChange={(e)=>{setSearch(e.target.value)}}
             className="border rounded-md px-4 py-2 w-[300px] focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
   

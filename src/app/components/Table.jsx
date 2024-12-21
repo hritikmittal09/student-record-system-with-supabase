@@ -21,11 +21,21 @@ const StudentTable = () => {
   const students = useStudentStore((state) => state.students);
   const fetchStudents = useStudentStore((state) => state.fetchStudents);
   const deleteStudent = useStudentStore((state) => state.deleteStudent);
+  const search = useStudentStore((state) => state.searchQuery);
+  const searchResults = useStudentStore((state) => state.filteredStudents)
+
+
 
   useEffect(()=>{
   
   fetchStudents()
 },[fetchStudents])
+
+
+
+useEffect(()=>{
+searchResults()
+},[search])
 
 
 const handlDelete = async(id)=>{
@@ -76,7 +86,7 @@ const handlDelete = async(id)=>{
             </tr>
           </thead>
           <tbody>
-            {students.map((student, idx) => (
+            {[...searchResults()].map((student, idx) => (
               <tr key={idx} className="border-b">
                 <td className="p-2">{student.Name}</td>
                 <td className="p-2">{student.cohort}</td>

@@ -1,8 +1,9 @@
 import { create } from 'zustand';
 import axios from 'axios';
 
-const useStudentStore = create((set) => ({
-  students: [], // Initial state
+const useStudentStore = create((set ,get) => ({
+  students: [],
+  searchQuery : "", // Initial state
   fetchStudents: async () => {
     try {
       const res = await axios.get('/api/records');
@@ -26,6 +27,19 @@ const useStudentStore = create((set) => ({
     } catch (error) {
       console.error('Error deleting student:', error);
     }
+  },
+  setSearchQuery: (query) => {
+    set({ searchQuery: query });
+  },
+  filteredStudents: () => {
+    const { students, searchQuery } = get();
+    console.log("Filtering with query:", searchQuery);
+
+    if (!searchQuery) return students; // Return all if no query
+    return students.filter((student) =>
+      student.Name?.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+   
   },
   
 }));
