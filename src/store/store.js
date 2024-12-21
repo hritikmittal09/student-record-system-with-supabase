@@ -11,7 +11,7 @@ const useStudentStore = create((set) => ({
       console.error('Error fetching students:', error);
     }
   },
-  deleteStudent: async (id:any) => {
+  deleteStudent: async (id) => {
     try {
       console.log(`Deleting student with id: ${id}`);
       const url = `/api/deleteRecord?id=${id}`;
