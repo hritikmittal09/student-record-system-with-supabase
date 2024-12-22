@@ -1,19 +1,34 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import useStudentStore from "@/store/store";
+import axios from "axios";
 
-const EditModel = ({ isOpen, onClose, onSave, initialName }) => {
+const EditModel = ({ isOpen, onClose, onSave, initialName ,id}) => {
+    const fetchStudents = useStudentStore((state) => state.fetchStudents);
+
   const [name, setName] = useState(initialName || "");
 
   useEffect(() => {
     // Sync name state with initialName whenever it changes
     setName(initialName || "");
-    console.log("Updated initialName:", initialName);
+    //console.log("Updated initialName:", initialName);
+    //console.log("studentid",id);
+    
   }, [initialName]);
-
-  const handleSave = () => {
+  const handleSave =async () => {
     console.log(name);
     //onSave(name); // Save the updated name
+    let url = "api/EditApi"
+    let body ={
+        id: id,
+        name: name,
+    }
+   const res = await axios.put(url,body);
+   console.log(res);
+   fetchStudents()
+   
+    
     onClose(); // Close the modal after saving
   };
 

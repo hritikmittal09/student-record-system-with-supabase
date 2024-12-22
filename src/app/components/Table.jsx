@@ -17,6 +17,7 @@ import EditModel from "./EditModel"
 const StudentTable = () => {
   const [open,setOpen] =useState(false)  
   const [Name,setName] =useState('')
+  const [studentid ,setstudentid] =useState(null)
 
 
    
@@ -59,6 +60,7 @@ const handleEdit =async(id,initialName)=>{
   setOpen(true)
   setName(initialName)
   console.log(Name);
+  setstudentid(id)
   
   
 }
@@ -121,7 +123,7 @@ const handleEdit =async(id,initialName)=>{
             ))}
           </tbody>
         </table>
-        <EditModel onClose={()=>setOpen(false)} isOpen = {open}  initialName = {Name}/>
+        <EditModel onClose={()=>setOpen(false)} isOpen = {open}  initialName = {Name} id={studentid}/>
         
       </div>
     );

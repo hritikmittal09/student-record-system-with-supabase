@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   try {
     const { error } = await supabase
       .from("students record")
-      .update({ name })
+      .update({ Name : name })
       .eq("id", id);
 
     if (error) {
