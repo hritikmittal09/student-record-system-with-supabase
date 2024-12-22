@@ -99,7 +99,11 @@ Fetch all student records from Supabase.
 Delete a student record by ID.
 
 ### POST/PUT `/api/addOrUpdateRecord`
-Add or update a student record.
+Add  a student record.
+
+
+### POST/PUT `/api/EditApi`
+update name of student.
 
 ---
 
@@ -135,5 +139,5 @@ The `store.js` file manages the state of the application. Key functions include:
 
 ---
 
-## License
-This project is open-source and available under the [MIT License](LICENSE).
+## deployed link
+### https://student-record-system-with-supabase.vercel.app/
