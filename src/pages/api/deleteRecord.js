@@ -1,4 +1,4 @@
-import  supabase  from "../../supabase/apis"  // Adjust the path to your Supabase client
+import  supabase  from "./config"  // Adjust the path to your Supabase client
 
 export default async function handler(req, res) {
   if (req.method !== 'DELETE') {

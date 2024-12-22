@@ -1,5 +1,5 @@
 
-import supabaseClient from "../../supabase/apis" // Adjust the path as needed
+import supabaseClient from './config' // Adjust the path as needed
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
