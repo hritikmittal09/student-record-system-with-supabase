@@ -8,12 +8,15 @@ import useStudentStore from "@/store/store";
 import Image from "next/image";
 import course from "../../../public/courseTable.png"
 import batch from "../../../public/batchTable.png"
+import { MdOutlineModeEdit } from "react-icons/md";
+import EditModel from "./EditModel"
+
 
 
 
 const StudentTable = () => {
   const [open,setOpen] =useState(false)  
-  const [data,setdata] =useState([])
+  const [Name,setName] =useState('')
 
 
    
@@ -47,12 +50,17 @@ const handlDelete = async(id)=>{
     
   } catch (error) {
     console.log(error);
-    
-    
-
-    
+       
   }
 
+} 
+const handleEdit =async(id,initialName)=>{
+  console.log(id);
+  setOpen(true)
+  setName(initialName)
+  console.log(Name);
+  
+  
 }
 
 
@@ -103,11 +111,18 @@ const handlDelete = async(id)=>{
                     }`}
                   ></span>
                 </td>
-                <td role="button" onClick={()=>{handlDelete(student.id)}}>{<MdOutlineDeleteOutline className=" text-2xl"/>}</td>
+                <td  >{<MdOutlineDeleteOutline onClick={()=>{handlDelete(student.id)}}role="button" className=" text-2xl"/>}
+
+
+                  {<MdOutlineModeEdit  onClick={()=>handleEdit(student.id,student.Name)}  role="button" className=" text-2xl"/>}
+
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <EditModel onClose={()=>setOpen(false)} isOpen = {open}  initialName = {Name}/>
+        
       </div>
     );
   };
