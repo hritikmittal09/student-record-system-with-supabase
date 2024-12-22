@@ -141,3 +141,9 @@ The `store.js` file manages the state of the application. Key functions include:
 
 ## deployed link
 ### https://student-record-system-with-supabase.vercel.app/
+
+
+
+![image](https://github.com/user-attachments/assets/c8a000ac-c345-4c83-9484-9788f2778c25)
+![image](https://github.com/user-attachments/assets/f96e9a7d-61df-4feb-ada6-e2eb7440d233)
+
