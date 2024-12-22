@@ -13,7 +13,7 @@ const EditModel = ({ isOpen, onClose, onSave, initialName }) => {
 
   const handleSave = () => {
     console.log(name);
-    onSave(name); // Save the updated name
+    //onSave(name); // Save the updated name
     onClose(); // Close the modal after saving
   };
 
