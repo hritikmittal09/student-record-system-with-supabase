@@ -50,6 +50,8 @@ const EditModel = ({ isOpen, onClose, onSave, initialName ,id}) => {
 
             {/* Input Field */}
             <div className="mb-4">
+              
+              <span  className=" text-black font-bold"> * you can only name of student in a record </span>
               <label
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
